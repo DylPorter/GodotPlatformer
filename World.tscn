@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://TileSet.tres" type="TileSet" id=1]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://CaveGenerator.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/Cursor.gd" type="Script" id=4]
+[ext_resource path="res://Player/highlight.png" type="Texture" id=5]
+[ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=6]
+
+[node name="World" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 6, 0 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 4
+collision_mask = 11
+format = 1
+tile_data = PoolIntArray( 196597, 2, 196608, 196598, 2, 196609, 196599, 2, 196609, 196600, 2, 196609, 196601, 2, 196609, 196602, 2, 196609, 196603, 2, 196609, 196604, 2, 196609, 196605, 2, 196609, 196606, 2, 196610 )
+
+[node name="CaveGenerator" parent="TileMap" instance=ExtResource( 3 )]
+map_width = 100
+map_height = 100
+world_seed = "Yo Godot!"
+noise_lacunarity = 1.0
+
+[node name="Cursor" type="Sprite" parent="TileMap"]
+texture = ExtResource( 5 )
+centered = false
+offset = Vector2( -16, -16 )
+script = ExtResource( 4 )
+
+[node name="Enemy" parent="." instance=ExtResource( 6 )]
+position = Vector2( -93, -4 )

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://CaveGenerator.gd" type="Script" id=1]
+
+[node name="CaveGenerator" type="Node2D"]
+script = ExtResource( 1 )
+map_width = 200
+map_height = 200
+world_seed = "poger"
+noise_octaves = 1
+noise_period = 10
+noise_lacunarity = 0.2
+noise_threshold = 0.2
+redraw = true
